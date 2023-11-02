@@ -74,7 +74,7 @@ class Run:
 
     @staticmethod
     def draw(bird):
-        bird.image.clip_composite_draw(int(bird.frame%5) * 180+3, 180*2-180*int(bird.frame/5),160,160,0,bird.face_dir, bird.x, bird.y,100,100)
+        bird.image.clip_composite_draw(int(bird.frame%5) * 180+3, 180*2-180*int(bird.frame/5),160,160,0,bird.face_dir, bird.x, bird.y,80,80)
 
 
 class StateMachine:
