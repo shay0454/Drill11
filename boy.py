@@ -106,14 +106,14 @@ class Run:
 
     @staticmethod
     def do(boy):
-        boy.frame = (boy.frame + FRAMES_PER_ACTION*ACTION_PER_TIME*game_framework.frame_time) % 8
+        boy.frame = (boy.frame + FRAMES_PER_ACTION*ACTION_PER_TIME*game_framework.frame_time) % 14
         boy.x += boy.dir * RUN_SPEED_PPS*game_framework.frame_time
         boy.x = clamp(25, boy.x, 1600-25)
 
 
     @staticmethod
     def draw(boy):
-        boy.image.clip_draw(int(boy.frame) * 100, boy.action * 100, 100, 100, boy.x, boy.y)
+        boy.image.clip_composite_draw(int(boy.frame) * 100, boy.action * 100, 100, 100, boy.x, boy.y)
 
 
 
@@ -176,7 +176,7 @@ class StateMachine:
 
 
 
-
+size=8*18/2
 class Boy:
     def __init__(self):
         self.x, self.y = 400, 90
