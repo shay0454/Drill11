@@ -46,7 +46,7 @@ RUN_SPEED_PPS=(RUN_SPEED_MPS*PIXEL_PER_METER)
 # bird Action Speed
 TIME_PER_ACTION=0.5
 ACTION_PER_TIME=1.0/TIME_PER_ACTION
-FRAMES_PER_ACTION=8
+FRAMES_PER_ACTION=45               #설정 : 45
 # fill here
 
 
@@ -110,8 +110,8 @@ class StateMachine:
 size=8*18/2
 class Bird:
     def __init__(self):
-        self.x, self.y = random.randint(200,600), 500
-        self.frame = 0
+        self.x, self.y = random.randint(200,600), random.randint(400,600)
+        self.frame = random.randint(0,14)
         self.action = 3
         self.face_dir = ''
         self.dir = 0
@@ -119,8 +119,8 @@ class Bird:
         self.state_machine = StateMachine(self)
         self.state_machine.start()
         self.item = 'Ball'
-        self.v=10
-        self.size=[180,180]
+        self.v=10           # 새의 속도
+        self.size=[180,180] # 새의 크기
 
     def fire_ball(self):
 
@@ -146,4 +146,3 @@ class Bird:
 
     def draw(self):
         self.state_machine.draw()
-        self.font.draw(self.x-60,self.y+50,f'Time : {get_time():.2f}',(255,255,0))
